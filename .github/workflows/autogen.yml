@@ -1,7 +1,8 @@
 name: Autogen Daily Trigger
 on:
   schedule:
-    - cron: '0 */6 * * *' # Каждые 6 часов.
+    # - cron: '0 */6 * * *' # Каждые 6 часов.
+    - cron: '0 9 * * *' # Каждые 6 часов.
   workflow_dispatch: # Позволяет запускать вручную из вкладки Actions
 jobs:
   trigger:
@@ -9,7 +10,7 @@ jobs:
     steps:
       - name: Call Autogen Endpoint
         run: |
-          curl -X POST https://tesseranomicon-api.onrender.com/autogen/run \
+          curl --max-time 600 -X POST https://tesseranomicon-api.onrender.com/autogen/run \
           -H "Content-Type: application/json" \
           -H "X-Autogen-Token: ${{ secrets.AUTOGEN_TOKEN }}" \
-          -d '{"triggered_by": "github_action"}'
+          -d '{"triggered_by": "github_cron"}'
