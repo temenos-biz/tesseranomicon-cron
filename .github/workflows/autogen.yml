@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Call Autogen Endpoint
         run: |
-          curl -f --max-time 600 -X POST https://tesseranomicon-api.onrender.com/autogen/run \
+          curl -f --max-time 900 -X POST https://tesseranomicon-api.onrender.com/autogen/run \
           -H "Content-Type: application/json" \
           -H "X-Autogen-Token: ${{ secrets.AUTOGEN_TOKEN }}" \
           -d '{"triggered_by": "github_cron"}'
