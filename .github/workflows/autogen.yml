@@ -1,8 +1,8 @@
 name: Autogen Daily Trigger
 on:
-  schedule:
+  # schedule:
     # Запуск каждый день в 09:00 UTC
-    - cron: '0 9 * * *' 
+    # - cron: '0 9 * * *' 
   workflow_dispatch: # Позволяет запускать вручную из вкладки Actions
 
 jobs:
